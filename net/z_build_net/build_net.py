@@ -163,7 +163,7 @@ class net_arch(object):
                 
                 net = attention(net, attention_size, True)
                 
-                net = slim.fully_connected(net, 256, activation_fn=tf.nn.relu, scope='Logits_out0')
+                #net = slim.fully_connected(net, 256, activation_fn=tf.nn.relu, scope='Logits_out0')
                 net = slim.fully_connected(net, num_classes, activation_fn=None,scope='Logits_out1')
         return net
 
@@ -192,7 +192,7 @@ class net_arch(object):
 
                 net = attention(net, attention_size, True)
                 #
-                net = slim.fully_connected(net[-1], 256, activation_fn=tf.nn.relu, scope='Logits_out0')
+                #net = slim.fully_connected(net[-1], 256, activation_fn=tf.nn.relu, scope='Logits_out0')
                 net = slim.fully_connected(net, num_classes, activation_fn=None,scope='Logits_out1')
         return net
 
