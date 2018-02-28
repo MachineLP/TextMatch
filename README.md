@@ -1,5 +1,5 @@
 
-# 自己搭建的一个训练框架，包含模型有：cnn+rnn: vgg(vgg16,vgg19)+rnn(LSTM, GRU), resnet(resnet_v2_50,resnet_v2_101,resnet_v2_152)+rnnrnn(LSTM, GRU), inception_v4+rnn(LSTM, GRU), inception_resnet_v2+rnn(LSTM, GRU)等。
+# 自己搭建的一个训练框架，包含模型有：cnn+rnn+attention: vgg(vgg16,vgg19)+rnn(LSTM, GRU)+attention, resnet(resnet_v2_50,resnet_v2_101,resnet_v2_152)+rnn(LSTM, GRU)+attention, inception_v4+rnn(LSTM, GRU)+attention, inception_resnet_v2+rnn(LSTM, GRU)+attention等。
 # 此框架主要针对分类任务， 后面会陆续搭建多任务多标签、检测等框架，欢迎关注。
 使用说明：
 搭建时使用的环境为：Python3.5, tensorflow1.2.1
@@ -11,7 +11,7 @@
 
 运行代码： python main.py 
 
-另外此代码加了tensorboard，将在工程目录下生成 xxx_log 的文件。 然后使用：tensorboard --logdir arch_inceion_v4_rnn_log查看。 后续有时间会把其它的功能加上。
+另外此代码加了tensorboard，将在工程目录下生成 xxx_log 的文件。 然后使用：tensorboard --logdir arch_inceion_v4_rnn_attention_log查看。 后续有时间会把其它的功能加上。
 
 其中，z_ckpt_pb：ckpt转pb的代码，和测试接口。
 
