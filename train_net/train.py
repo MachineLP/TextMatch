@@ -164,8 +164,8 @@ def train(train_data,train_label,valid_data,valid_label,train_n,valid_n,IMAGE_HE
             print("Early stopping.")
             print("Best valid loss was {:.6f} at epoch {}.".format(best_valid, best_valid_epoch))
             break
-        if valid_acc/int(valid_n/batch_size) > 0.90:
-            saver2.save(sess, model_path, global_step=epoch_i, write_meta_graph=False)
+        #if valid_acc/int(valid_n/batch_size) > 0.90:
+        #    saver2.save(sess, model_path, global_step=epoch_i, write_meta_graph=False)
 
         print('>>>>>>>>>>>>>>>>>>>shuffle train_data<<<<<<<<<<<<<<<<<')
         # 每个epoch，重新打乱一次训练集：
