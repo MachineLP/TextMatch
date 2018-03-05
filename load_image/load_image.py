@@ -23,12 +23,12 @@ class load_image(object):
         self.train_rate = train_rate
     
     def load_img_path(self, img_label):
-        imgs = os.listdir(self.craterDir + self.foldName)
+        imgs = os.listdir(os.path.join(self.craterDir, self.foldName))  
         imgNum = len(imgs)
         self.data = []
         self.label = []
         for i in range (imgNum):
-            img_path = self.craterDir+self.foldName+"/"+imgs[i]
+            img_path = os.path.join(self.craterDir, self.foldName, imgs[i]) 
             # 用来检测图片是否有效，放在这里会太费时间。
             # img = cv2.imread(img_path)
             # if img is not None:
@@ -49,7 +49,7 @@ class load_image(object):
         self.train_imgs = []
         self.train_labels = []
         for i, path in enumerate(img_path):
-            self.craterDir = self.imgDir + '/'
+            self.craterDir = self.imgDir
             self.foldName = path
             self.load_img_path(i)
             self.train_imgs.extend(self.data)
