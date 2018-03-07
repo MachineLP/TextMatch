@@ -26,7 +26,7 @@ class data_aug(object):
             self.image = np.fliplr(self.image) # 左右
 
     # 上下镜像    
-    def _random_flidud(self, random_flipud = True):
+    def _random_flipud(self, random_flipud = True):
         if random_flipud and np.random.choice([True, False]):
             self.image = np.flipud(self.image) # 上下
         
