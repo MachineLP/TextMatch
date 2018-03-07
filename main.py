@@ -71,6 +71,8 @@ if __name__ == '__main__':
     # ont-hot
     train_label = np_utils.to_categorical(train_label, num_classes)
     valid_label = np_utils.to_categorical(valid_label, num_classes)
+    if not os.path.isdir('model'):
+        os.makedirs('model')
     ##----------------------------------------------------------------------------##
 
     print ("-----------------------------train.py start--------------------------")
