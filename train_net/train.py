@@ -108,10 +108,17 @@ def train(train_data,train_label,valid_data,valid_label,train_n,valid_n,IMAGE_HE
     sess.run(init)
 
     #
-    log_dir = arch_model + '_log'
-    if not os.path.exists(log_dir):
-        os.makedirs(log_dir)
-    writer = tf.summary.FileWriter(log_dir, sess.graph)
+    def make_dir(log_dir):
+        if not os.path.exists(log_dir):
+            os.makedirs(log_dir)
+    train_log_dir = arch_model + '_train_log'
+    valid_log_dir = arch_model + '_valid_log'
+    make_dir(train_log_dir)
+    make_dir(valid_log_dir)
+    
+    train_writer = tf.summary.FileWriter(train_log_dir, sess.graph)
+    valid_writer = tf.summary.FileWriter(valid_log_dir, sess.graph)
+    
 
     saver2 = tf.train.Saver(tf.global_variables())
     model_path = 'model/fine-tune'
@@ -136,13 +143,14 @@ def train(train_data,train_label,valid_data,valid_label,train_n,valid_n,IMAGE_HE
 
             if batch_i % 100 == 0:
                 images_valid, labels_valid = get_next_batch_from_path(valid_data, valid_label, batch_i%(int(valid_n/batch_size)), IMAGE_HEIGHT, IMAGE_WIDTH, batch_size=batch_size, is_train=False)
-                ls, acc = sess.run([loss, accuracy], feed_dict={X: images_valid, Y: labels_valid, k_prob:1.0, is_training:False})
+                ls, acc, summary_str = sess.run([loss, accuracy, summary_op], feed_dict={X: images_valid, Y: labels_valid, k_prob:1.0, is_training:False})
+                valid_writer.add_summary(summary_str, global_step=((int(train_n/batch_size))*epoch_i+batch_i))
                 print('Batch: {:>2}: Validation loss: {:>3.5f}, Validation accuracy: {:>3.5f}'.format(batch_i, ls, acc))
                 #if acc > 0.90:
                 #    saver2.save(sess, model_path, global_step=batch_i, write_meta_graph=False)
             elif batch_i % 20 == 0:
                 loss_, acc_, summary_str = sess.run([loss, accuracy, summary_op], feed_dict={X: images_train, Y: labels_train, k_prob:1.0, is_training:False})
-                writer.add_summary(summary_str, global_step=((int(train_n/batch_size))*epoch_i+batch_i))
+                train_writer.add_summary(summary_str, global_step=((int(train_n/batch_size))*epoch_i+batch_i))
                 print('Batch: {:>2}: Training loss: {:>3.5f}, Training accuracy: {:>3.5f}'.format(batch_i, loss_, acc_))
                  
         print('Epoch===================================>: {:>2}'.format(epoch_i))
