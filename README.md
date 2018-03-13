@@ -11,7 +11,7 @@
 
 运行代码： python main.py 
 
-另外此代码加了tensorboard，将在工程目录下生成 xxx_log 的文件。 然后使用：tensorboard --logdir arch_inceion_v4_rnn_attention_log查看。 后续有时间会把其它的功能加上。
+另外此代码加了tensorboard，将在工程目录下生成 xxx_log 的文件。 然后使用：tensorboard --logdir arch_inceion_v4_rnn_attention_train_log查看(tensorboard --logdir arch_inceion_v4_rnn_attention_valid_log)。 后续有时间会把其它的功能加上。
 
 其中，z_ckpt_pb：ckpt转pb的代码，和测试接口。
 
