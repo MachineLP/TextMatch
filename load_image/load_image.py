@@ -22,7 +22,7 @@ class load_image(object):
         self.imgDir = img_dir
         self.train_rate = train_rate
     
-    def load_img_path(self, img_label):
+    def _load_img_path(self, img_label):
         imgs = os.listdir(os.path.join(self.craterDir, self.foldName))  
         imgNum = len(imgs)
         self.data = []
@@ -35,7 +35,7 @@ class load_image(object):
             self.data.append(img_path)
             self.label.append(int(img_label))
 
-    def shuffle_train_data(self):
+    def _shuffle_train_data(self):
         index = [i for i in range(len(self.train_imgs))]
         np.random.shuffle(index)
         self.train_imgs = np.asarray(self.train_imgs)
@@ -44,25 +44,25 @@ class load_image(object):
         self.train_labels = self.train_labels[index]
 
 
-    def load_database_path(self):
+    def _load_database_path(self):
         img_path = os.listdir(self.imgDir)
         self.train_imgs = []
         self.train_labels = []
         for i, path in enumerate(img_path):
             self.craterDir = self.imgDir
             self.foldName = path
-            self.load_img_path(i)
+            self._load_img_path(i)
             self.train_imgs.extend(self.data)
             self.train_labels.extend(self.label)
             print ("文件名对应的label:")
             print (path, i)
         #打乱数据集
-        self.shuffle_train_data()
+        self._shuffle_train_data()
         # 数据集的数量
         self.image_n = len(self.train_imgs)
     
     def gen_train_valid_image(self):
-        self.load_database_path()
+        self._load_database_path()
         self.train_n = int(self.image_n * self.train_rate)
         self.valid_n = int(self.image_n * (1 - self.train_rate))
         return self.train_imgs[0:self.train_n], self.train_labels[0:self.train_n], self.train_imgs[self.train_n:self.image_n], self.train_labels[self.train_n:self.image_n]
