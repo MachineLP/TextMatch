@@ -2,7 +2,7 @@
 # 自己搭建的一个训练框架，包含模型有：cnn+rnn+attention: vgg(vgg16,vgg19)+rnn(LSTM, GRU)+attention, resnet(resnet_v2_50,resnet_v2_101,resnet_v2_152)+rnn(LSTM, GRU)+attention, inception_v4+rnn(LSTM, GRU)+attention, inception_resnet_v2+rnn(LSTM, GRU)+attention等。
 # 此框架主要针对分类任务， 后面会陆续搭建多任务多标签、检测等框架，欢迎关注。
 使用说明：
-搭建时使用的环境为：Python3.5, tensorflow1.2.1
+搭建时使用的环境为：Python3.5, tensorflow1.4
 
 变量设置参考config.py。
 详细说明参见config.py。
