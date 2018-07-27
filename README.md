@@ -7,7 +7,7 @@
 变量设置参考config.py。
 详细说明参见config.py。
 
-( mkdir pretrain/inception_v4, 下载与训练模型, cp到pretrain/inception_v4/ ) 
+( mkdir pretrain/inception_v4, 下载预训练模型, cp到pretrain/inception_v4/ ) 
 
 运行代码： python main.py 
 
