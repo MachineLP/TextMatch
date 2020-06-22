@@ -45,21 +45,21 @@ class ModelFactory(object):
                 model = XGB()
                 model.load_model()
                 self.model[match_model] = model
-            elif match_model == 'xlgb':
+            elif match_model == 'lgb':
                 model = LGB()
                 model.load_model()
                 self.model[match_model] = model
             else:
-                logging.error( "[text classifer ModelFactory] match_model not existed，please select from ['dnn', 'rnn', 'cnn', ...] " )
+                logging.error( "[text classifer ModelFactory] match_model not existed，please select from ['lr', 'gbdt', 'gbdtlr', 'xgb', 'lgb' ...] " )
                 continue
     def init(self):
         pass
 
-    def predict(self, words):
+    def predict(self, emb):
         pre_dict = {}
         for key, model in self.model.items():
             pre_list = []
-            pre = model.predict(words)
+            pre = model.predict(emb) 
             pre_dict[key] = pre
         return pre_dict 
 
