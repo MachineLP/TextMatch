@@ -16,6 +16,7 @@ __C.emb.JIEBA_FLAG = True
 __C.emb.DEL_STOPWORD = False
 __C.emb.MAX_DF = 0.8
 __C.emb.MIN_DF = 0.2
+__C.emb.MAX_FEATURES = None
 __C.emb.NGRAM_RANGE = 3
 
 

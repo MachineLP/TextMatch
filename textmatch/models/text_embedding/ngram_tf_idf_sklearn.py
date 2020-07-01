@@ -40,7 +40,7 @@ class NgramTfIdf(ModelBase):
             if os.path.exists(per_path) == False:
                 os.makedirs(per_path)
         self.stop_word = stop_word() 
-        self.vectorizer = CountVectorizer(stop_words = None, token_pattern='(?u)\\b\\w\\w*\\b')    
+        self.vectorizer = CountVectorizer(stop_words = None, max_df=cfg.emb.MAX_DF, min_df=cfg.emb.MIN_DF, max_features=cfg.emb.MAX_FEATURES, token_pattern='(?u)\\b\\w\\w*\\b')    
         self.transformer = TfidfTransformer()
 
     # init
