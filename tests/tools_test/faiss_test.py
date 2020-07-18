@@ -45,14 +45,19 @@ if __name__ == '__main__':
     res = pca.transform( data )
     print('res>>', res)
 
+   
+
+    pre = text_embedding.predict("潮流和规律")
+    feature = np.concatenate([pre[model] for model in ['bow', 'tfidf', 'ngram_tfidf', 'w2v']], axis=0)
+    test = pca.transform( [feature] )
 
     faiss_search = FaissSearch( res, sport_mode=False )
-    I, D = faiss_search.predict( res[:2] )
+    I, D = faiss_search.predict( test )
     print( "I:{}; D:{}".format(I, D) )
 
     
     faiss_search = FaissSearch( res, sport_mode=True )
-    I, D = faiss_search.predict( res[:2] )
+    I, D = faiss_search.predict( test )
     print( "I:{}; D:{}".format(I, D) )
  
 
