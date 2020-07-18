@@ -195,6 +195,7 @@ export PYTHONPATH=${PYTHONPATH}:../TextMatch
 python tests/tools_test/kmeans_test.py
 python tests/tools_test/dbscan_test.py
 python tests/tools_test/pca_test.py
+python tests/tools_test/faiss_test.py
 ```
 
 ### run tests/tools_test   （词云）
