@@ -50,12 +50,76 @@ if __name__ == '__main__':
 
 ```
 
+examples/text_search.py
+```python
+import sys
+import json 
+import time
+import faiss
+import numpy as np
+from faiss import normalize_L2
+from textmatch.config.constant import Constant as const
+from textmatch.core.text_embedding import TextEmbedding
+from textmatch.tools.decomposition.pca import PCADecomposition
+from textmatch.tools.faiss.faiss import FaissSearch
+
+test_dict = {"id0": "其实事物发展有自己的潮流和规律",
+   "id1": "当你身处潮流之中的时候，要紧紧抓住潮流的机会",
+   "id2": "想办法脱颖而出，即使没有成功，也会更加洞悉时代的脉搏",
+   "id3": "收获珍贵的知识和经验。而如果潮流已经退去",
+   "id4": "这个时候再去往这个方向上努力，只会收获迷茫与压抑",
+   "id5": "对时代、对自己都没有什么帮助",
+   "id6": "但是时代的浪潮犹如海滩上的浪花，总是一浪接着一浪，只要你站在海边，身处这个行业之中，下一个浪潮很快又会到来。你需要敏感而又深刻地去观察，略去那些浮躁的泡沫，抓住真正潮流的机会，奋力一搏，不管成败，都不会遗憾。",
+   "id7": "其实事物发展有自己的潮流和规律",
+   "id8": "当你身处潮流之中的时候，要紧紧抓住潮流的机会" }
 
 
-### run tests/core_test
+if __name__ == '__main__':
+    # ['bow', 'tfidf', 'ngram_tfidf', 'bert']
+    # ['bow', 'tfidf', 'ngram_tfidf', 'bert', 'w2v']
+    # text_embedding = TextEmbedding( match_models=['bow', 'tfidf', 'ngram_tfidf', 'w2v'], words_dict=test_dict ) 
+    text_embedding = TextEmbedding( match_models=['bow', 'tfidf', 'ngram_tfidf', 'w2v'], words_dict=None, update=False ) 
+    feature_list = []
+    for sentence in test_dict.values():
+        pre = text_embedding.predict(sentence)
+        feature = np.concatenate([pre[model] for model in ['bow', 'tfidf', 'ngram_tfidf', 'w2v']], axis=0)
+        feature_list.append(feature)
+    pca = PCADecomposition(n_components=8)
+    data = np.array( feature_list )
+    pca.fit( data )
+    res = pca.transform( data )
+    print('res>>', res)
+
+   
+
+    pre = text_embedding.predict("潮流和规律")
+    feature = np.concatenate([pre[model] for model in ['bow', 'tfidf', 'ngram_tfidf', 'w2v']], axis=0)
+    test = pca.transform( [feature] )
+
+    faiss_search = FaissSearch( res, sport_mode=False )
+    I, D = faiss_search.predict( test )
+    '''
+    faiss kmeans result times 8.0108642578125e-05
+    I:[[0 7 3]]; D:[[0.7833399  0.7833399  0.63782495]]
+    '''
+
+    
+    faiss_search = FaissSearch( res, sport_mode=True )
+    I, D = faiss_search.predict( test )
+    print( "I:{}; D:{}".format(I, D) )
+    '''
+    faiss kmeans result times 3.266334533691406e-05
+    I:[[0 7 3]]; D:[[0.7833399  0.7833399  0.63782495]]
+    '''
+```
+
+
+
+### run tests/core_test （qa/文本embedding）
 ```
 git clone https://github.com/MachineLP/TextMatch
 cd TextMatch
+pip install -r requirements.txt
 export PYTHONPATH=${PYTHONPATH}:../TextMatch
 python tests/core_test/qa_match_test.py
 python tests/core_test/text_embedding_test.py
@@ -63,19 +127,56 @@ python tests/core_test/text_embedding_test.py
 
 
 
-
-### run tests/models_test
+### run tests/models_test （模型测试）
 ```
 git clone https://github.com/MachineLP/TextMatch
 cd TextMatch
+pip install -r requirements.txt
 export PYTHONPATH=${PYTHONPATH}:../TextMatch
-python tests/models_test/bm25_test.py
-python tests/models_test/edit_sim_test.py
-python tests/models_test/jaccard_sim_test.py
-python tests/models_test/bow_sklearn_test.py
-python tests/models_test/tf_idf_sklearn_test.py
-python tests/models_test/ngram_tf_idf_sklearn_test.py
-python tests/models_test/w2v_test.py
+python tests/models_test/bm25_test.py                    (bm25)
+python tests/models_test/edit_sim_test.py                (编辑距离)
+python tests/models_test/jaccard_sim_test.py             (jaccard)
+python tests/models_test/bow_sklearn_test.py             (bow)
+python tests/models_test/tf_idf_sklearn_test.py          (tf_idf)
+python tests/models_test/ngram_tf_idf_sklearn_test.py    (ngram_tf_idf)
+python tests/models_test/w2v_test.py                     (w2v)
+python tests/models_test/albert_test.py                  (bert)
 ```
+
+### run tests/ml_test  （机器学习模型测试）
+```
+git clone https://github.com/MachineLP/TextMatch
+cd TextMatch
+pip install -r requirements.txt
+export PYTHONPATH=${PYTHONPATH}:../TextMatch
+python tests/ml_test/lr_test.py                          (lr)
+python tests/ml_test/gbdt_test.py                        (gbdt)
+python tests/ml_test/gbdt_lr_test.py                     (gbdt_lr)
+python tests/ml_test/lgb_test.py                         (lgb)
+python tests/ml_test/xgb_test.py                         (xgb)
+```
+
+### run tests/tools_test   （聚类/降维工具测试）
+```
+git clone https://github.com/MachineLP/TextMatch
+cd TextMatch
+pip install -r requirements.txt
+export PYTHONPATH=${PYTHONPATH}:../TextMatch
+python tests/tools_test/kmeans_test.py                   (kmeans)
+python tests/tools_test/dbscan_test.py                   (dbscan)
+python tests/tools_test/pca_test.py                      (pca)
+python tests/tools_test/faiss_test.py                    (faiss)
+```
+
+### run tests/tools_test   （词云）
+```
+git clone https://github.com/MachineLP/TextMatch
+cd TextMatch
+pip install -r requirements.txt
+cd tests/tools_test
+python generate_word_cloud.py
+```
+![word_cloud](./docs/pics/word_cloud.png)
+
 
 
