@@ -50,7 +50,16 @@ if __name__ == '__main__':
 
 ```
 
-examples/text_search.py
+### run examples
+```
+git clone https://github.com/MachineLP/TextMatch
+cd TextMatch
+export PYTHONPATH=${PYTHONPATH}:../TextMatch
+python tests/tools_test/faiss_test.py
+
+```
+
+tests/tools_test/faiss_test.py
 ```python
 import sys
 import json 
