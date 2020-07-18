@@ -23,6 +23,7 @@ Let's [**Run examples**](./EXAMPLES.md) !
 | Kmeans    | [12](./textmatch/tools/clustering/kmeans.py)  | [test](./tests/tools_test/kmeans_test.py) |
 | DBSCAN    | [13](./textmatch/tools/clustering/dbscan.py)  | [test](./tests/tools_test/dbscan_test.py) |
 | PCA    | [14](./textmatch/tools/decomposition/pca.py)  | [test](./tests/tools_test/pca_test.py) |
+| FAISS  | [15](./textmatch/tools/faiss/faiss.py)  | [test](./tests/tools_test/faiss_test.py) |
 | ....    |  |  |
 | lr    | [92](./textmatch/models/ml/lr.py) | [test](./tests/ml_test/lr_test.py) |
 | gbdt    | [93](./textmatch/models/ml/gbdt.py) | [test](./tests/ml_test/gbdt_test.py) |
