@@ -124,7 +124,8 @@ if __name__ == '__main__':
 
 ```
 
-#### 
+# 
+
 ### 样例：
 ```
 git clone https://github.com/MachineLP/TextMatch
@@ -197,7 +198,7 @@ if __name__ == '__main__':
     '''
 ```
 
-### 
+# 
 
 ### run train_model/ (train embedding(bow/tfidf/ngram tfidf/bert/albert...  train classifer))
 ```
