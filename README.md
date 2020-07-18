@@ -130,19 +130,19 @@ git clone https://github.com/MachineLP/TextMatch
 cd TextMatch
 pip install -r requirements.txt
 export PYTHONPATH=${PYTHONPATH}:../TextMatch
-python train_model/train_bow.py                 (文本embedding)
-python train_model/train_tfidf.py               (文本embedding)
-python train_model/train_ngram_tfidf.py         (文本embedding)
-python train_model/train_bert.py                (文本embedding)
-python train_model/train_albert.py              (文本embedding)
-python train_model/train_w2v.py                 (文本embedding)
-python train_model/train_dssm.py                (文本embedding)
-python train_model/train_lr_classifer.py             (文本分类)
-python train_model/train_gbdt_classifer.py           (文本分类)
-python train_model/train_gbdlr_classifer.py          (文本分类)
-python train_model/train_lgb_classifer.py            (文本分类)
-python train_model/train_xgb_classifer.py            (文本分类)
-python train_model/train_dnn_classifer.py            (文本分类)
+python train_model/train_bow.py                          (文本embedding)
+python train_model/train_tfidf.py                        (文本embedding)
+python train_model/train_ngram_tfidf.py                  (文本embedding)
+python train_model/train_bert.py                         (文本embedding)
+python train_model/train_albert.py                       (文本embedding)
+python train_model/train_w2v.py                          (文本embedding)
+python train_model/train_dssm.py                         (文本embedding)
+python train_model/train_lr_classifer.py                 (文本分类)
+python train_model/train_gbdt_classifer.py               (文本分类)
+python train_model/train_gbdlr_classifer.py              (文本分类)
+python train_model/train_lgb_classifer.py                (文本分类)
+python train_model/train_xgb_classifer.py                (文本分类)
+python train_model/train_dnn_classifer.py                (文本分类)
 ```
 
 ### run tests/core_test （qa/文本embedding）
@@ -163,14 +163,14 @@ git clone https://github.com/MachineLP/TextMatch
 cd TextMatch
 pip install -r requirements.txt
 export PYTHONPATH=${PYTHONPATH}:../TextMatch
-python tests/models_test/bm25_test.py
-python tests/models_test/edit_sim_test.py
-python tests/models_test/jaccard_sim_test.py
-python tests/models_test/bow_sklearn_test.py
-python tests/models_test/tf_idf_sklearn_test.py
-python tests/models_test/ngram_tf_idf_sklearn_test.py
-python tests/models_test/w2v_test.py
-python tests/models_test/albert_test.py
+python tests/models_test/bm25_test.py                    (bm25)
+python tests/models_test/edit_sim_test.py                (编辑距离)
+python tests/models_test/jaccard_sim_test.py             (jaccard)
+python tests/models_test/bow_sklearn_test.py             (bow)
+python tests/models_test/tf_idf_sklearn_test.py          (tf_idf)
+python tests/models_test/ngram_tf_idf_sklearn_test.py    (ngram_tf_idf)
+python tests/models_test/w2v_test.py                     (w2v)
+python tests/models_test/albert_test.py                  (bert)
 ```
 
 ### run tests/ml_test  （机器学习模型测试）
@@ -179,11 +179,11 @@ git clone https://github.com/MachineLP/TextMatch
 cd TextMatch
 pip install -r requirements.txt
 export PYTHONPATH=${PYTHONPATH}:../TextMatch
-python tests/ml_test/lr_test.py
-python tests/ml_test/gbdt_test.py
-python tests/ml_test/gbdt_lr_test.py
-python tests/ml_test/lgb_test.py
-python tests/ml_test/xgb_test.py
+python tests/ml_test/lr_test.py                          (lr)
+python tests/ml_test/gbdt_test.py                        (gbdt)
+python tests/ml_test/gbdt_lr_test.py                     (gbdt_lr)
+python tests/ml_test/lgb_test.py                         (lgb)
+python tests/ml_test/xgb_test.py                         (xgb)
 ```
 
 ### run tests/tools_test   （聚类/降维工具测试）
@@ -192,10 +192,10 @@ git clone https://github.com/MachineLP/TextMatch
 cd TextMatch
 pip install -r requirements.txt
 export PYTHONPATH=${PYTHONPATH}:../TextMatch
-python tests/tools_test/kmeans_test.py
-python tests/tools_test/dbscan_test.py
-python tests/tools_test/pca_test.py
-python tests/tools_test/faiss_test.py
+python tests/tools_test/kmeans_test.py                   (kmeans)
+python tests/tools_test/dbscan_test.py                   (dbscan)
+python tests/tools_test/pca_test.py                      (pca)
+python tests/tools_test/faiss_test.py                    (faiss)
 ```
 
 ### run tests/tools_test   （词云）
