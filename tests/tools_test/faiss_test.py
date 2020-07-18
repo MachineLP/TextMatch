@@ -53,6 +53,7 @@ if __name__ == '__main__':
 
     faiss_search = FaissSearch( res, sport_mode=False )
     I, D = faiss_search.predict( test )
+    print( "I:{}; D:{}".format(I, D) )
     '''
     faiss kmeans result times 8.0108642578125e-05
     I:[[0 7 3]]; D:[[0.7833399  0.7833399  0.63782495]]
