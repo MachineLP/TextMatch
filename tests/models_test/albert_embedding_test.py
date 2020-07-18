@@ -2,7 +2,7 @@
 '''
 -------------------------------------------------
    Description :  albert_embedding测试
-   Author :       liupeng
+   Author :       machinelp
    Date :         2020-06-18
 -------------------------------------------------
 

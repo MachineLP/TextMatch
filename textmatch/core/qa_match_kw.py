@@ -17,8 +17,11 @@ class QAMatchKW():
         output: {'id0':0.2, 'id1':0.5, ...}
     '''
 
-    def __init__(self, qkw_path=None, akw_path=None, pretrain=False):
-        self.a_flag = a_flag
+    def __init__(self, qkw_dict=None, akw_path=None, pretrain=False):
+        self.qkw_dict = qkw_dict
+        self.akw_path = akw_path
+
+    def init__(self, qkw_path=None, akw_path=None, pretrain=False):
         self.qkw_dict = self._load_json(qkw_path)
         self.akw_path = self._load_json(akw_path)
 
