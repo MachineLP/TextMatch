@@ -25,6 +25,7 @@ test_dict = {"id0": "其实事物发展有自己的潮流和规律",
 if __name__ == '__main__':
     # ['bow', 'tfidf', 'ngram_tfidf', 'bert']
     # ['bow', 'tfidf', 'ngram_tfidf', 'bert', 'w2v']
+    # text_embedding = TextEmbedding( match_models=['bow', 'tfidf', 'ngram_tfidf', 'w2v'], words_dict=None, update=False ) 
     text_embedding = TextEmbedding( match_models=['bow', 'tfidf', 'ngram_tfidf', 'w2v'], words_dict=test_dict ) 
     pre = text_embedding.predict( "其实事物发展有自己的潮流和规律" ) 
     print ('text_embedding>>>>>', pre) 
