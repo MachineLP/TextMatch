@@ -59,9 +59,13 @@ __C.lgb.bagging_freq = 5
 __C.lgb.lambda_l1 = 0.4
 __C.lgb.lambda_l2 = 0.5
 
-
 #DL
 
+
+# faiss
+__C.faiss = edict()
+__C.faiss.n_clusters = 3         # 聚类中心的个数
+__C.faiss.nprobe = 3             # 取多少簇计算相似度
 
 
 ###
