@@ -15,12 +15,17 @@ from textmatch.models.text_search.model_factory_search import ModelFactorySearch
 
 
 
-def test_q_match(testword, doc_dict):
+def text_match_recall(testword, doc_dict):
     # QMatch
     q_match = QMatch( q_dict=doc_dict, match_models=['bow', 'tfidf', 'ngram_tfidf', 'albert']) 
     q_match_pre = q_match.predict(testword, match_strategy='score', vote_threshold=0.5, key_weight = {'bow': 1, 'tfidf': 1, 'ngram_tfidf': 1, 'albert': 1})
     # print ('q_match_pre>>>>>', q_match_pre )
     return q_match_pre 
+
+def text_match_sort(testword, candidate_doc_dict):
+    text_match = TextMatch( q_dict=candidate_doc_dict, match_models=['bm25', 'edit_sim', 'jaccard_sim'] )
+    text_match_res = text_match.predict( query, match_strategy='score', vote_threshold=-100.0, key_weight = {'bm25': 0, 'edit_sim': 1, 'jaccard_sim': 1} )
+    return text_match_res 
 
 
 if __name__ == '__main__':
@@ -35,7 +40,7 @@ if __name__ == '__main__':
 
     
     # 召回
-    match_pre = test_q_match( query, doc_dict )
+    match_pre = text_match_recall( query, doc_dict )
     print( '召回的结果:', match_pre )
 
     candidate_doc_dict = dict( zip( match_pre.keys(), [doc_dict[key] for key in match_pre.keys()] ) )
@@ -52,8 +57,7 @@ if __name__ == '__main__':
 
     # 排序
     # ['bm25', 'edit_sim', 'jaccard_sim']
-    text_match = TextMatch( q_dict=candidate_doc_dict, match_models=['bm25', 'edit_sim', 'jaccard_sim'] )
-    text_match_pre = text_match.predict( query, match_strategy='score', vote_threshold=-100.0, key_weight = {'bm25': 0, 'edit_sim': 1, 'jaccard_sim': 1} )
-    print ('排序的score>>>>>', text_match_pre) 
+    text_match_res = text_match_sort( query, candidate_doc_dict )
+    print ('排序的score>>>>>', text_match_res) 
 
 
