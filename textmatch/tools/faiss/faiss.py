@@ -57,7 +57,8 @@ class FaissSearch():
       print('faiss kmeans result times {}'.format(t2-t1))
       #print(I[:topn])                   # 表示最相近的前3个的index
       #print(D[:topn])                   # 表示最相近的前3个的相似度的值
-      return I, D
+      # return I, D
+      return [ dict(zip(i, d)) for i,d in zip(I, D) ]
 
 
 

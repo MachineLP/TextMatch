@@ -22,7 +22,7 @@ from textmatch.models.ml.lgb import LGB
 '''
 '''
 
-class ModelFactory(object):
+class ModelFactoryClassifier(object):
     '''match model factory
     '''
     def __init__(self, match_models=['gbdt']
