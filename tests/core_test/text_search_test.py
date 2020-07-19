@@ -32,19 +32,26 @@ if __name__ == '__main__':
     doc_dict = {"0":"我去玉龙雪山并且喜欢玉龙雪山玉龙雪山", "1":"我在玉龙雪山并且喜欢玉龙雪山", "2":"我在九寨沟", "3":"我在九寨沟,很喜欢", "4":"很喜欢"}   
     query = "我在九寨沟,很喜欢"
     
-    # 
+    # 直接搜索
     mf = ModelFactorySearch( match_models=['bm25', 'edit_sim', 'jaccard_sim'] )
     mf.init(words_dict=doc_dict)
     pre = mf.predict(query)
     print ('pre>>>>>', pre) 
 
     
-    # 召回
+    # 先召回
     match_pre = text_match_recall( query, doc_dict )
     print( '召回的结果:', match_pre )
 
     candidate_doc_dict = dict( zip( match_pre.keys(), [doc_dict[key] for key in match_pre.keys()] ) )
     print ("candidate_doc_dict:", candidate_doc_dict)
+
+    # 再排序
+    # ['bm25', 'edit_sim', 'jaccard_sim']
+    text_match_res = text_match_sort( query, candidate_doc_dict )
+    print ('排序的score>>>>>', text_match_res) 
+
+
 
     '''
     # 排序
@@ -54,10 +61,5 @@ if __name__ == '__main__':
     print ('排序的结果>>>>>', pre) 
     '''
 
-
-    # 排序
-    # ['bm25', 'edit_sim', 'jaccard_sim']
-    text_match_res = text_match_sort( query, candidate_doc_dict )
-    print ('排序的score>>>>>', text_match_res) 
 
 
