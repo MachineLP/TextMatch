@@ -10,7 +10,7 @@
 
 import sys
 import numpy as np
-from utils.logging import log_init
+from textmatch.utils.logging import log_init
 logging = log_init(const.LOG_PATH)
 from textmatch.models.text_search.bm25 import BM25
 from textmatch.config.constant import Constant as const

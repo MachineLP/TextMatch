@@ -13,6 +13,8 @@ import faiss
 import numpy as np
 from faiss import normalize_L2
 from textmatch.config.config import cfg
+from textmatch.utils.logging import log_init
+logging = log_init(const.LOG_PATH)
 
 
 class FaissSearch():
@@ -54,7 +56,8 @@ class FaissSearch():
       t1=time.time()
       D, I = self.index.search(vector, topn)
       t2 = time.time()
-      print('faiss kmeans result times {}'.format(t2-t1))
+      # print('faiss kmeans result times {}'.format(t2-t1))
+      self.logging.info( "[ESEngine] faiss kmeans result times:{}".format( t2-t1 ) )
       #print(I[:topn])                   # 表示最相近的前3个的index
       #print(D[:topn])                   # 表示最相近的前3个的相似度的值
       # return I, D
