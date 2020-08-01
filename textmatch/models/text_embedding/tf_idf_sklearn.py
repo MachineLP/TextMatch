@@ -14,13 +14,13 @@ import pickle
 import numpy as np
 from .stop_words import StopWords
 from textmatch.config.config import cfg
-from textmatch.utils.logging import log_init
-logging = log_init(const.LOG_PATH)
+from gensim import corpora, models, similarities
 from textmatch.config.constant import Constant as const
 from textmatch.models.model_base.model_base import ModelBase
-from gensim import corpora, models, similarities
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.feature_extraction.text import CountVectorizer
+from textmatch.utils.logging import log_init
+logging = log_init(const.LOG_PATH)
 
 class TfIdf(ModelBase):
 

@@ -15,13 +15,13 @@ import pickle
 import numpy as np
 from .stop_words import StopWords
 from textmatch.config.config import cfg
-from textmatch.utils.logging import log_init
-logging = log_init(const.LOG_PATH)
+from gensim import corpora, models, similarities
 from textmatch.config.constant import Constant as const
 from textmatch.models.model_base.model_base import ModelBase
-from gensim import corpora, models, similarities
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.feature_extraction.text import CountVectorizer
+from textmatch.utils.logging import log_init
+logging = log_init(const.LOG_PATH)
 
 class NgramTfIdf(ModelBase):
 
@@ -57,13 +57,13 @@ class NgramTfIdf(ModelBase):
                 self.transformer = pickle.load(f)
         else:
             try:
-                 logging.info('[Tfidf] start build tfidf model.')
+                 logging.info('[NgramTfIdf] start build ngram_tfidf model.')
                  if words_list==None:
-                     logging.error( '[Bow] words_list is None' )
+                     logging.error( '[NgramTfIdf] words_list is None' )
                  self._gen_model(word_list)
-                 logging.info('[Tfidf] build tfidf model success.')
+                 logging.info('[NgramTfIdf] build ngram_tfidf model success.')
             except Exception as e:
-                 logging.error( '[Tfidf] build tfidf model error，error info: {} '.format(e) )
+                 logging.error( '[NgramTfIdf] build ngram_tfidf model error，error info: {} '.format(e) )
         
         if words_list!=None:
             self.words_list_pre = []

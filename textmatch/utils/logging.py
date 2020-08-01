@@ -5,7 +5,6 @@ import sys
 import json
 import time
 import logging
-from qdsearch.conf.config import config
 from logging.handlers import RotatingFileHandler
 from logging.handlers import TimedRotatingFileHandler
 

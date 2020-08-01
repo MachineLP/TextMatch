@@ -13,12 +13,12 @@ import jieba
 import pickle
 import numpy as np
 from rank_bm25 import BM25Okapi
-from textmatch.utils.logging import log_init
-logging = log_init(const.LOG_PATH)
-from textmatch.models.text_embedding.stop_words import StopWords
 from textmatch.config.config import Config as conf
 from textmatch.config.constant import Constant as const
 from textmatch.models.model_base.model_base import ModelBase
+from textmatch.models.text_embedding.stop_words import StopWords
+from textmatch.utils.logging import log_init
+logging = log_init(const.LOG_PATH)
 
 
 class BM25(ModelBase):
