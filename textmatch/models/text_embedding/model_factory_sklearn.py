@@ -10,6 +10,7 @@
 
 import sys
 import numpy as np
+from textmatch.utils.logging import logging
 from textmatch.config.constant import Constant as const
 from textmatch.models.text_embedding.w2v import Word2Vec
 from textmatch.models.text_embedding.bow_sklearn import Bow
@@ -18,8 +19,6 @@ from textmatch.models.text_embedding.ngram_tf_idf_sklearn import NgramTfIdf
 from textmatch.models.text_embedding.stop_words import StopWords
 from textmatch.models.text_embedding.bert_embedding import BertEmbedding
 from textmatch.models.text_embedding.albert_embedding import ALBertEmbedding
-from textmatch.utils.logging import log_init
-logging = log_init(const.LOG_PATH)
 
 '''
 '''

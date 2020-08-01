@@ -10,8 +10,7 @@
 
 import sys
 import numpy as np
-from textmatch.utils.logging import log_init
-logging = log_init(const.LOG_PATH)
+from textmatch.utils.logging import logging
 from textmatch.config.constant import Constant as const
 from textmatch.models.text_classifier.dnn import DNN 
 from textmatch.models.ml.lr import LR

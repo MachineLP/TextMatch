@@ -7,6 +7,7 @@ import time
 import logging
 from logging.handlers import RotatingFileHandler
 from logging.handlers import TimedRotatingFileHandler
+from textmatch.config.constant import Constant as const
 
 
 start_time = time.time()
@@ -27,3 +28,5 @@ def log_init(log_path):
     logging.getLogger('').addHandler(log_file_handler)
     logging.info('exec_day :{}, exec_hour :{}, exec_minute :{}'.format(exec_day, exec_hour, exec_minute))
     return logging
+
+logging = log_init( const.LOG_PATH )

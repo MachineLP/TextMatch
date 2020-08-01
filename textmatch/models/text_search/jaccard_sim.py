@@ -13,12 +13,11 @@ import jieba
 import pickle
 import distance
 import numpy as np
+from textmatch.utils.logging import logging
 from textmatch.config.config import Config as conf
 from textmatch.config.constant import Constant as const
 from textmatch.models.model_base.model_base import ModelBase
 from textmatch.models.text_embedding.stop_words import StopWords
-from textmatch.utils.logging import log_init
-logging = log_init(const.LOG_PATH)
 
 
 class Jaccard(ModelBase):

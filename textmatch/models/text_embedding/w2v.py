@@ -13,10 +13,12 @@ import jieba
 import gensim
 import threading
 import numpy as np
+from .stop_words import StopWords
 from textmatch.config.config import cfg
+from textmatch.utils.logging import logging
 from textmatch.config.constant import Constant as const
 from textmatch.models.model_base.model_base import ModelBase
-from .stop_words import StopWords
+
 
 class Word2VecBase():
     '''
