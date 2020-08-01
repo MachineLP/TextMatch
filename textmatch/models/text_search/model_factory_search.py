@@ -9,10 +9,11 @@
 '''
 
 import sys
-import logging
 import numpy as np
-from textmatch.config.constant import Constant as const
+from utils.logging import log_init
+logging = log_init(const.LOG_PATH)
 from textmatch.models.text_search.bm25 import BM25
+from textmatch.config.constant import Constant as const
 from textmatch.models.text_search.edit_sim import EditDistance
 from textmatch.models.text_search.jaccard_sim import Jaccard
 

@@ -9,8 +9,9 @@
 '''
 
 import sys
-import logging
 import numpy as np
+from utils.logging import log_init
+logging = log_init(const.LOG_PATH)
 from textmatch.config.constant import Constant as const
 from textmatch.models.text_embedding.bow_sklearn import Bow
 from textmatch.models.text_embedding.tf_idf_sklearn import TfIdf

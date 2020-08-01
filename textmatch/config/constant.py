@@ -4,6 +4,11 @@ import os
 import threading
 
 class Constant():
+
+    PWD_PATH = './' #os.getenv("HOLMES_ROOT_PATH")
+    LOG_PATH = os.path.join(PWD_PATH, 'logs/logs')
+
+
     base_dir = './data/'
     # 停用词
     STOPWORDS_FILE = os.path.join(base_dir,'./text_model_file/stop_words/stop_words.txt')

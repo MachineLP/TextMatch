@@ -11,9 +11,10 @@
 import os
 import jieba
 import pickle
-import logging
 import numpy as np
 from .stop_words import StopWords
+from utils.logging import log_init
+logging = log_init(const.LOG_PATH)
 from textmatch.config.config import cfg
 from textmatch.config.constant import Constant as const
 from textmatch.models.model_base.model_base import ModelBase
