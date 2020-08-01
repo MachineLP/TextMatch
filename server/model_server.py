@@ -18,6 +18,7 @@ import numpy as np
 import mlflow.pyfunc
 from pyspark.sql import DataFrame
 from sklearn.externals import joblib
+from textmatch.utils.logging import logging
 from textmatch.config.constant import Constant as const
 from textmatch.models.text_embedding.model_factory_sklearn import ModelFactory
 
@@ -25,8 +26,8 @@ from textmatch.models.text_embedding.model_factory_sklearn import ModelFactory
 cur_abs_dir = os.path.dirname(os.path.abspath(__file__))
 code_home = cur_abs_dir
 sys.path.insert(0, code_home)
-print('[model_server] python version: %s' % platform.python_version())
-print('[model_server] code_home: %s' % code_home)
+logging.info( "[model_server] python version:{}".format( platform.python_version() ) )
+logging.info( "[model_server] code_home:{}".format( code_home ) )
 
 start = time.time()
 exec_time = time.time() - int(time.time()) % 900
@@ -48,9 +49,9 @@ class TextMatchWrapper(mlflow.pyfunc.PythonModel):
         self.mf.init(words_dict=self.wordstest_dict, update=True)
 
     def predict(self, context, model_input):
-        #print('model_input>>>', model_input)
-        #print('model_input[text]>>>', model_input["text"].values)
-        return self.mf.predict(model_input["text"].values[0])
+        res = self.mf.predict(model_input["text"].values[0])
+        logging.info( "[TextMatchWrapper] res:{}".format( res ) )
+        return res
 
 
 
@@ -78,7 +79,7 @@ def parse_argvs():
     parser.add_argument("--model_file", help="模型存储路径",default='model')
     parser.add_argument("--local_store", help="是否本地存储",action='store_true', default=True)
     args = parser.parse_args()
-    print('[model_predictor] args: %s' % args)
+    logging.info( "[model_predictor] args:{}".format( args ) )
 
     return parser, args
 
@@ -92,5 +93,5 @@ if __name__ == '__main__':
     model_server(experiment_name=experiment_name, version_name=input_version_name, args=args)
 
     end = time.time()
-    print('运行时长: {}s'.format(int(end - start)))
+    logging.info( "运行时长: {}s".format( int(end - start) ) )
 
