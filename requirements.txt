@@ -6,7 +6,7 @@ mlflow==1.2.0
 xgboost==0.90
 lightgbm==2.3.0
 gensim==3.8.1
-tensorflow==1.13.1
+tensorflow-gpu==1.13.1
 Keras==2.2.5
 rank-bm25==0.2.1
 Distance==0.1.3
