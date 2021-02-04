@@ -76,6 +76,9 @@ Let's [**Run examples**](./EXAMPLES.md) !
 # 
 # 
 
+<img src="https://github.com/MachineLP/TextMatch/blob/master/docs/text_match.png" width="200" height="200" alt="text_match"/><br/>
+
+
 ### 样例：
 ```
 git clone https://github.com/MachineLP/TextMatch
