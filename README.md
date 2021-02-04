@@ -76,8 +76,6 @@ Let's [**Run examples**](./EXAMPLES.md) !
 # 
 # 
 
-<img src="https://github.com/MachineLP/TextMatch/blob/master/docs/text_match.png" width="200" height="200" alt="text_match"/><br/>
-
 
 ### 样例：
 ```
@@ -128,6 +126,8 @@ if __name__ == '__main__':
 ```
 
 # 
+
+<img src="https://github.com/MachineLP/TextMatch/blob/master/docs/text_match.png" width="400" height="400" alt="text_match"/>
 
 ### 样例：
 ```
