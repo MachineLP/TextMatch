@@ -286,4 +286,6 @@ pip install -r requirements.txt
 cd tests/tools_test
 python generate_word_cloud.py
 ```
-![word_cloud](./docs/pics/word_cloud.png)
+
+<img src="https://github.com/MachineLP/TextMatch/blob/master/docs/pics/word_cloud.png" width="200" height="200" alt="word_cloud"/>
+
