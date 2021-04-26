@@ -13,7 +13,7 @@ Let's [**Run examples**](./EXAMPLES.md) !
 | TFIDF | [2](./textmatch/models/text_embedding/tf_idf_sklearn.py)                 | [test](./tests/models_test/tf_idf_sklearn_test.py) |
 | Ngram-TFIDF     | [3](./textmatch/models/text_embedding/ngram_tf_idf_sklearn.py) | [test](./tests/models_test/ngram_tf_idf_sklearn_test.py) |
 | W2V     | [4](./textmatch/models/text_embedding/w2v.py)                          | [test](./tests/models_test/w2v_test.py) |
-| BERT    | [5](./textmatch/models/text_embedding/bert_embedding.py)               | [BERT-whitening](https://github.com/bojone/BERT-whitening)校正了BERT句向量分布，使cos相似度更合理。 |
+| BERT    | [5](./textmatch/models/text_embedding/bert_embedding.py)               | [BERT-whitening](https://github.com/bojone/BERT-whitening)校正了BERT句向量分布，使cos相似度更合理。 [SimCSE](https://github.com/bojone/SimCSE)|
 | ALBERT  | [6](./textmatch/models/text_embedding/albert_embedding.py)             | [test](./tests/models_test/albert_embedding_test.py) 链接:https://pan.baidu.com/s/1HSVS104iBBOsfw7hXdyqLQ  密码:808k |
 | DSSM    |  |  |
 | bm25    | [8](./textmatch/models/text_search/bm25.py)  | [test](./tests/models_test/bm25_test.py) |
