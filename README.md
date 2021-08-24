@@ -288,4 +288,4 @@ python generate_word_cloud.py
 ```
 
 <img src="https://github.com/MachineLP/TextMatch/blob/master/docs/pics/word_cloud.png" width="300" height="200" alt="word_cloud"/>
-
+  
