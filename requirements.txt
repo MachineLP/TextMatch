@@ -2,7 +2,7 @@
 scikit-learn==0.21.3
 jieba==0.42.1
 bert4keras==0.5.9
-mlflow==1.2.0
+mlflow==2.2.1
 xgboost==0.90
 lightgbm==2.3.0
 gensim==3.8.1
