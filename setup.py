@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 REQUIRED_PACKAGES = [
-    'scikit-learn==0.21.3','jieba==0.42.1',"bert4keras==0.5.9", "mlflow==1.2.0"
+    'scikit-learn==0.21.3','jieba==0.42.1',"bert4keras==0.5.9", "mlflow==2.3.1"
 ]
 
 setuptools.setup(
